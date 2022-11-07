@@ -1,7 +1,12 @@
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
 
-async function main(): Promise<void> {}
+async function bootstrap() {
+	const app = await NestFactory.create(AppModule);
+	await app.init();
+}
 
-main().catch((error): void => {
-    process.exitCode = 1;
-    console.error(error);
+bootstrap().catch((error): void => {
+	process.exitCode = 1;
+	console.error(error);
 });
